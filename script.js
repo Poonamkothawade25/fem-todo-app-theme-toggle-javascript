@@ -13,7 +13,10 @@ const AllTasks = document.querySelector(".to-do-list li");
 
 const clearCompletedBtn = document.getElementById("clear-completed-btn");
 
+const items_left_count =  document.getElementById("items-left-count");
+
 let listCount = 0;
+updateCount(listCount);
 
 console.log(tasks);
 
@@ -77,6 +80,7 @@ function addNewTask() {
     }
 
     inputBox.value = "";
+    updateCount(1);
 }
 
 // marking or unmarking tasks as complete and deleting the list items
@@ -88,15 +92,16 @@ tasks.addEventListener("click", (e) => {
         e.target.parentElement.classList.toggle("checked");
     } else {
         e.target.parentElement.remove();
+        updateCount(-1);
     }
 })
 
 // display no of items left in tasklist
-
+    
 function updateCount(item)
 {
-
-
+    listCount += item;
+    items_left_count.textContent = listCount;
 }
 
 // all, active, completed button events
