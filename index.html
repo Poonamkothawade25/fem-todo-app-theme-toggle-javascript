@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | Todo app</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="logo">Todo</h1>
+    <button id="theme-toggle-btn">
+      <img src="images/icon-sun.svg" alt="theme-icon" class="theme-icon">
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="add-item">
+      <button class="add-item-btn" id="add-task-btn"></button>
+      <input type="text" placeholder="Create a new todo..." id="input-box">
+    </div>
+
+    <section>
+      <div class="to-do-list-container">
+        <ul class="to-do-list">
+          <!-- <li id="initial-list-item">
+            <p>Your list is currently empty..</p>
+          </li> -->
+          <!-- <li>
+            <button></button> 
+            <p>Complete Javascript Cousrse  and work on getting ot aklshdkjasjh</p>
+            <img src="images/icon-cross.svg" alt="Close button">
+          </li>
+          <li>
+            <button></button> 
+            <p>Complete Javascript Cousrse</p>
+            <img src="images/icon-cross.svg" alt="Close button">
+          </li>
+          <li>
+            <button></button> 
+            <p >Complete Javascript Cousrse</p>
+            <img src="images/icon-cross.svg" alt="Close button">
+          </li>
+          <li>
+            <button></button> 
+            <p>Complete Javascript Cousrse</p>
+            <img src="images/icon-cross.svg" alt="Close button">
+          </li> -->
+        </ul>
+        <ul class="nav">
+          <li class="items-left">
+            <span>5 </span>items left
+          </li>
+          <div class="nav-items">
+            <li>
+              <button>All</button>
+            </li>
+            <li>
+              <button>Active</button>
+            </li>
+            <li>
+              <button>Completed</button>
+            </li>
+          </div>
+          <li>
+            <button class="clear-completed-btn" id="clear-completed-btn">Clear Completed</button>
+          </li>
+        </ul>
+      </div>
+      <p class="instruction">Drag and drop to reorder list</p>
+    </section>
+    
+  
+  </main>
+
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Poonam Kothawade</a>.
+    </div>
+  </footer>
+  
+</body>
+</html>
