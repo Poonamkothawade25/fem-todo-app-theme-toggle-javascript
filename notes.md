@@ -7,7 +7,11 @@ how to add task to list on keyboard enter press
 -using addEventListener on event keypress and get the button and add click method on it
 eg on keypress of enter button.click  (https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp)
 
-CSS
+how to make an element draggable
+-set draggable attribute of an element to true uding setAttribute() method in javascript. (https://www.w3schools.com/tags/att_global_draggable.asp)
+(https://www.youtube.com/watch?v=jfYWwQrtzzY&t=101s)
+
+-CSS
 
 how to create a custom caret
 -do some research

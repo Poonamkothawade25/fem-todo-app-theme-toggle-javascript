@@ -192,8 +192,8 @@ input::placeholder {
     position: relative;
 }
 
-.to-do-list li p {
-    cursor: pointer;
+.to-do-list li.dragging {
+    opacity: 0.5;
 }
 
 .to-do-list li button {
@@ -203,6 +203,11 @@ input::placeholder {
     border: 0.09rem solid var(--Very-Dark-Grayish-Blue-2);
     cursor: pointer;
     position: relative;
+}
+
+.to-do-list li p,
+.to-do-list li img {
+    cursor: pointer;
 }
 
 .to-do-list li button:hover,

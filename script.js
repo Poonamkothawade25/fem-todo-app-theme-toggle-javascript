@@ -19,8 +19,6 @@ let taskList = localStorage.getItem("taskList");
 let listCount = 0;
 updateCount(listCount);
 
-console.log(navBtns);
-
 // Changing theme
 
 const enableDarkMode = () => {
@@ -72,6 +70,7 @@ function addNewTask() {
     if(inputBox.value !== "") {
 
         let li = document.createElement("li");
+        li.setAttribute("draggable", "true");
         li.innerHTML = `
                         <button></button>
                         <p>${inputBox.value}</p>
@@ -89,11 +88,11 @@ function addNewTask() {
 
 tasks.addEventListener("click", (e) => {
 
-    if(e.target.tagName === "LI" || e.target.tagName === "P" || e.target.tagName === "BUTTON")
+    if(e.target.tagName === "P" || e.target.tagName === "BUTTON")
     {
         e.target.parentElement.classList.toggle("checked");
         saveData();
-    } else {
+    } else if(e.target.tagName === "IMG") {
         e.target.parentElement.remove();
         updateCount(-1);
         saveData();
@@ -151,3 +150,45 @@ function clearCompletedTasks() {
 
 
 // reordering of tasks by dragging and dropping
+
+const draggables = document.querySelectorAll("[draggable = 'true']");
+draggables.forEach(draggable => {
+    draggable.addEventListener("dragstart", () => {
+        draggable.classList.add("dragging");
+    })
+
+    draggable.addEventListener("dragend", () => {
+        draggable.classList.remove("dragging");
+    })
+})
+
+tasks.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(tasks, e.clientY); //e.clientY returns the currnet Y position of our mouse
+    console.log(afterElement);
+    const draggingTask = document.querySelector(".dragging");
+    if(afterElement == null) {
+        tasks.appendChild(draggingTask);
+    } else {
+        tasks.insertBefore(draggingTask, afterElement);
+    }
+
+})
+
+function getDragAfterElement(tasks, y) {
+    const draggableElements = [...tasks.querySelectorAll("[draggable = 'true']:not(.dragging)")];
+
+    return draggableElements.reduce((closest, listItem) => {
+
+        const box = listItem.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+
+        if(offset < 0 && offset > closest.offset) {
+            return { offset : offset, element : listItem };
+        } else {
+            return closest;
+        }
+
+    }, { offset: Number.NEGATIVE_INFINITY }).element
+
+}
