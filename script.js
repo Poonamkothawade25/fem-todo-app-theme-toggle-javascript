@@ -8,17 +8,18 @@ const inputBox = document.getElementById("input-box");
 const addTaskBtn = document.getElementById("add-task-btn");
 
 const tasks = document.querySelector(".to-do-list");
-const completedTasks = document.getElementsByClassName("checked");
-const AllTasks = document.querySelector(".to-do-list li");
+const AllTasks = tasks.getElementsByTagName("li");
 
 const clearCompletedBtn = document.getElementById("clear-completed-btn");
+const navBtns = document.querySelectorAll(".nav-items li");
 
 const items_left_count =  document.getElementById("items-left-count");
 
+let taskList = localStorage.getItem("taskList");
 let listCount = 0;
 updateCount(listCount);
 
-console.log(tasks);
+console.log(navBtns);
 
 // Changing theme
 
@@ -81,6 +82,7 @@ function addNewTask() {
 
     inputBox.value = "";
     updateCount(1);
+    saveData();
 }
 
 // marking or unmarking tasks as complete and deleting the list items
@@ -90,21 +92,43 @@ tasks.addEventListener("click", (e) => {
     if(e.target.tagName === "LI" || e.target.tagName === "P" || e.target.tagName === "BUTTON")
     {
         e.target.parentElement.classList.toggle("checked");
+        saveData();
     } else {
         e.target.parentElement.remove();
         updateCount(-1);
+        saveData();
     }
 })
 
 // display no of items left in tasklist
-    
+
 function updateCount(item)
 {
     listCount += item;
     items_left_count.textContent = listCount;
 }
 
+// Adding list to local storage
+
+function saveData() {
+    localStorage.setItem("taskList", tasks.innerHTML);
+}
+
+function displayTasks() {
+    tasks.innerHTML = taskList;
+    updateCount(AllTasks.length);
+}
+
+displayTasks();
+
 // all, active, completed button events
+
+navBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+    })
+})
+
 
 // clear completed button event
 
@@ -114,22 +138,16 @@ clearCompletedBtn.addEventListener("click", () => {
 
 function clearCompletedTasks() {
 
-    // not removing all completed items at once using AllTasks and removing all incomplete items as well using completedTasks
-    // for(let i = 0; i < completedTasks.length - 1; i++)
-    // {
-    //     console.log(completedTasks[i]);
-    //     completedTasks[i].remove();
-    // }
-    for(let i = 0; i < AllTasks.length - 1; i++)
+    for(let i = 0; i < AllTasks.length; i++)
     {
         if(AllTasks[i].classList.contains("checked"))
         {
-            console.log(AllTasks[i]);
             AllTasks[i].remove();
+            updateCount(-1)
         }
+        saveData();
     }
 }
 
-// Adding list to local storage
 
 // reordering of tasks by dragging and dropping

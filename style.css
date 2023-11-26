@@ -188,8 +188,12 @@ input::placeholder {
     border-bottom: 0.01rem solid var(--Very-Dark-Grayish-Blue-2);
     padding: 1rem;
     user-select: none;
-    cursor: pointer;
+    cursor: move;
     position: relative;
+}
+
+.to-do-list li p {
+    cursor: pointer;
 }
 
 .to-do-list li button {
