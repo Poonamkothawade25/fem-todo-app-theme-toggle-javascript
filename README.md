@@ -36,8 +36,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/Poonamkothawade25/fem-todo-app-theme-toggle-javascript)
-- Live Site URL: [Add live site URL here](https://poonamkothawade25.github.io/fem-todo-app-theme-toggle-javascript/)
+- Solution URL: [https://github.com/Poonamkothawade25/fem-todo-app-theme-toggle-javascript]
+- Live Site URL: [https://poonamkothawade25.github.io/fem-todo-app-theme-toggle-javascript/]
 
 ## My process
 
