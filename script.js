@@ -19,6 +19,7 @@ let taskList = localStorage.getItem("taskList");
 let listCount = 0;
 updateCount(listCount);
 
+
 // Changing theme
 
 const enableDarkMode = () => {
@@ -123,10 +124,54 @@ displayTasks();
 // all, active, completed button events
 
 navBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-
+    btn.addEventListener("click", (e) => {
+        filterList(e.target.id);
     })
 })
+
+function filterList(id) {
+
+    const allTasks = document.querySelectorAll(".to-do-list li");
+
+    switch(id) 
+    {
+        case "All":
+            allTasks.forEach(task => {
+                task.style.display = "flex";
+                saveData();
+            })
+            break;
+
+        case "Active":
+            allTasks.forEach(task => {
+
+                if(task.classList.contains("checked")) {
+                    task.style.display = "none";
+                    saveData();
+                } else {
+                    task.style.display = "flex";
+                    saveData();
+                }
+
+            })
+
+            break;
+
+        case "Completed":
+            allTasks.forEach((task) => {
+
+                if(task.classList.contains("checked")) {
+                    task.style.display = "flex";
+                    saveData();
+                } else {
+                    task.style.display = "none";
+                    saveData();
+                }
+            })
+            break;
+
+    }
+}
 
 
 // clear completed button event
@@ -136,8 +181,7 @@ clearCompletedBtn.addEventListener("click", () => {
 })
 
 function clearCompletedTasks() {
-
-    const completedTasks= document.querySelectorAll(".to-do-list li.checked");
+    const completedTasks = document.querySelectorAll(".to-do-list li.checked");
 
     completedTasks.forEach((task) => {
 
@@ -149,17 +193,18 @@ function clearCompletedTasks() {
 
 }
 
-
 // reordering of tasks by dragging and dropping
 
 const draggables = document.querySelectorAll("[draggable = 'true']");
 draggables.forEach(draggable => {
     draggable.addEventListener("dragstart", () => {
         draggable.classList.add("dragging");
+        saveData();
     })
 
     draggable.addEventListener("dragend", () => {
         draggable.classList.remove("dragging");
+        saveData();
     })
 })
 
@@ -170,8 +215,10 @@ tasks.addEventListener("dragover", (e) => {
     const draggingTask = document.querySelector(".dragging");
     if(afterElement == null) {
         tasks.appendChild(draggingTask);
+        saveData();
     } else {
         tasks.insertBefore(draggingTask, afterElement);
+        saveData();
     }
 
 })

@@ -180,7 +180,6 @@ input::placeholder {
 }
 
 .to-do-list li {
-    /* width: 100%; */
     min-height: 4rem;
     display: flex;
     align-items: center;
@@ -311,13 +310,15 @@ input::placeholder {
     cursor: pointer;
 }
 
-.nav-items li:first-child button {
+/* .nav-items li button:focus {
     color: var(--BrightBlue);
-    cursor: pointer;
 }
 
-.nav-items li:not(:first-child) button:hover,
-.nav-items li:not(:first-child) button:focus,
+.nav-items li button:not(:focus) {
+    color: var(--Very-Dark-Grayish-Blue-1);
+} */
+
+.nav-items li button:hover,
 .clear-completed-btn:hover,
 .clear-completed-btn:focus {
     color: var(--Light-Grayish-Blue-hover);
