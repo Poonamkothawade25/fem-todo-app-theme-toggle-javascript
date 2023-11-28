@@ -80,8 +80,7 @@ function addNewTask() {
         inputBox.value = "";
         updateCount(1);
         saveData();
-    } else return
-
+    } 
     
 }
 
