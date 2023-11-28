@@ -77,7 +77,7 @@ function addNewTask() {
                         <img src="images/icon-cross.svg" alt="Close button">
                       `
         tasks.appendChild(li);
-    }
+    } else return
 
     inputBox.value = "";
     updateCount(1);
