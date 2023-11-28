@@ -77,11 +77,12 @@ function addNewTask() {
                         <img src="images/icon-cross.svg" alt="Close button">
                       `
         tasks.appendChild(li);
+        inputBox.value = "";
+        updateCount(1);
+        saveData();
     } else return
 
-    inputBox.value = "";
-    updateCount(1);
-    saveData();
+    
 }
 
 // marking or unmarking tasks as complete and deleting the list items
