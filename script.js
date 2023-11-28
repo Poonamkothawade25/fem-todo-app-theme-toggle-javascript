@@ -137,15 +137,16 @@ clearCompletedBtn.addEventListener("click", () => {
 
 function clearCompletedTasks() {
 
-    for(let i = 0; i < AllTasks.length; i++)
-    {
-        if(AllTasks[i].classList.contains("checked"))
-        {
-            AllTasks[i].remove();
-            updateCount(-1)
-        }
+    const completedTasks= document.querySelectorAll(".to-do-list li.checked");
+
+    completedTasks.forEach((task) => {
+
+        task.remove();
+        updateCount(-1);
         saveData();
-    }
+
+    })
+
 }
 
 
