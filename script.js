@@ -164,7 +164,7 @@ draggables.forEach(draggable => {
 
 tasks.addEventListener("dragover", (e) => {
     e.preventDefault();
-    const afterElement = getDragAfterElement(tasks, e.clientY); //e.clientY returns the currnet Y position of our mouse
+    const afterElement = getDragAfterElement(tasks, e.clientY); //e.clientY returns the current Y position of our mouse
     console.log(afterElement);
     const draggingTask = document.querySelector(".dragging");
     if(afterElement == null) {
