@@ -62,8 +62,7 @@ Users should be able to:
 
 ### Continued development
 
-- Adding active color state to All, Active and completed buttons.
-- Making the page responsive.
+- Make all button hover when not active.
 
 ## Author
 
