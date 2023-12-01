@@ -62,7 +62,7 @@ Users should be able to:
 
 ### Continued development
 
-- Adding functions to All, Active and completed buttons.
+- Adding active color state to All, Active and completed buttons.
 - Making the page responsive.
 
 ## Author

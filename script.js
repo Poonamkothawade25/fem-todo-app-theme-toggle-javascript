@@ -11,7 +11,7 @@ const tasks = document.querySelector(".to-do-list");
 const AllTasks = tasks.getElementsByTagName("li");
 
 const clearCompletedBtn = document.getElementById("clear-completed-btn");
-const navBtns = document.querySelectorAll(".nav-items li");
+const navBtns = document.querySelectorAll(".nav-items li button");
 
 const items_left_count =  document.getElementById("items-left-count");
 
@@ -123,9 +123,26 @@ displayTasks();
 
 // all, active, completed button events
 
+function markInactive() {
+    navBtns.forEach(btn => {
+        if(btn.innerHTML === "All")
+        {
+            btn.style.color = "var(--Very-Dark-Grayish-Blue-1)";
+        }
+        btn.classList.remove("active");
+    })
+}
+
 navBtns.forEach(btn => {
     btn.addEventListener("click", (e) => {
-        filterList(e.target.id);
+        markInactive();
+        if(btn.innerHTML === e.target.id) {
+            btn.classList.add("active");
+        } 
+        if(btn.innerHTML === "All") {
+            btn.style.color = "var(--BrightBlue)"
+        }
+        filterList(e.target.id); 
     })
 })
 
@@ -138,7 +155,6 @@ function filterList(id) {
         case "All":
             allTasks.forEach(task => {
                 task.style.display = "flex";
-                saveData();
             })
             break;
 
@@ -147,10 +163,8 @@ function filterList(id) {
 
                 if(task.classList.contains("checked")) {
                     task.style.display = "none";
-                    saveData();
                 } else {
                     task.style.display = "flex";
-                    saveData();
                 }
 
             })
@@ -162,10 +176,8 @@ function filterList(id) {
 
                 if(task.classList.contains("checked")) {
                     task.style.display = "flex";
-                    saveData();
                 } else {
                     task.style.display = "none";
-                    saveData();
                 }
             })
             break;
